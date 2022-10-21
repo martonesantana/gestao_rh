@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block Title %}Lista de Departamentos{% endblock %}
+
+
+{% block main %}
+<h1>Lista de Departamentos</h1>
+<a href="{% url 'create_departamentos' %}" class="btn btn-success"><i class="fa-solid fa-plus"></i> Novo Departamento</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Empresa</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for departamento in object_list %}
+        <tr>
+            <td>{{ departamento.nome }}</td>
+            <td>{{ departamento.empresa }}</td>
+            <td>
+                <a href="{% url 'edit_departamentos' departamento.id %}" class="btn btn-primary"><i
+                        class="fa-solid fa-pen-to-square"></i></a>
+                <a href="{% url 'delete_departamentos' departamento.id %}" class="btn btn-danger"><i
+                        class="fa-solid fa-trash"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

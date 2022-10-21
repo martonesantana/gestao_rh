@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block Title %}Deletar departamento{% endblock %}
+
+{% block main %}
+<form method="POST">
+    {% csrf_token %}
+    <h1>Você está ciente que quer deletar o {{ obj }}?</h1>
+
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-danger">Confirmar</button>
+</form>
+
+
+{% endblock %}
