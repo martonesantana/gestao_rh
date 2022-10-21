@@ -4,6 +4,7 @@
 
 {% block main %}
     <h1>Index</h1>
-    <p>Olá, {{ user.username }}!</p>
+    <p>Olá, {{ user.funcionario }}!</p>
     <p>Seu email é {{ user.email }}.</p>
+    <p>A sua empresa é {{ user.funcionario.empresa }}.</p>
 {% endblock %}
