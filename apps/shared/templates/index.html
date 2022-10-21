@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %} Index {% endblock %}
+
+{% block main %}
+    <h1>Index</h1>
+    <p>Olá, {{ user.username }}!</p>
+    <p>Seu email é {{ user.email }}.</p>
+{% endblock %}
