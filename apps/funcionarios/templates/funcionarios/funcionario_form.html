@@ -1,13 +1,39 @@
 {% extends 'base.html' %}
+{% load bootstrap %}
 
-{% block Title %}Editar funcionário{% endblock %}
+
+
+
+{% block Title %}Funcionário{% endblock %}
 
 {% block main %}
-    <h1>Editar funcionário</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Salvar</button>
-    </form>
-{% endblock %}
 
+
+
+<form method="POST">
+    {% csrf_token %}
+
+    {{ form | bootstrap }}
+    <div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+
+</form>
+
+<h2>Documentos</h2>
+<ul>
+    {% for documento in object.documento_set.all %}
+    <li>
+        <a href="{{ documento.arquivo.url }}"> {{ documento.descricao }}</a>
+    </li>
+    {% endfor %}
+
+</ul>
+
+
+<a href="{% url 'create_documentos' object.id %}" class="btn btn-success"><i class="fa-regular fa-file"></i>
+    Adicionar Documento
+</a>
+
+
+{% endblock %}
