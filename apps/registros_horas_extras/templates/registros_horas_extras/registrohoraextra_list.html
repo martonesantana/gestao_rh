@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block Title %}Banco de Horas{% endblock %}
+
+
+{% block main %}
+    <h1>Banco de Horas</h1>
+    <a href="{% url 'create_horas_extras' %}" class="btn btn-success"><i class="fa-solid fa-plus"></i> Adicionar Horas</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Funcionario</th>
+                <th>Motivo</th>
+                <th>Horas</th>               
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registroHoras in object_list %}
+                <tr>
+                    <td>{{ registroHoras.funcionario }}</td>
+                    <td>{{ registroHoras.motivo }}</td>
+                    <td>{{ registroHoras.horas }}</td>
+                    
+                    <td>
+                        <a href="{% url 'edit_horas_extras' registroHoras.id %}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="{% url 'delete_horas_extras' registroHoras.id %}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+    
+
+    
+    

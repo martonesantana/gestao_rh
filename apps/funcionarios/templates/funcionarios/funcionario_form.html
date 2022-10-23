@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load bootstrap %}
+{% load static %}
 
 
 
@@ -20,6 +21,8 @@
 
 </form>
 
+<br>
+
 <h2>Documentos</h2>
 <ul>
     {% for documento in object.documento_set.all %}
@@ -29,11 +32,31 @@
     {% endfor %}
 
 </ul>
-
-
 <a href="{% url 'create_documentos' object.id %}" class="btn btn-success"><i class="fa-regular fa-file"></i>
     Adicionar Documento
 </a>
 
+<br>
 
+<h2>Banco de Horas</h2>
+<ul>
+    {% for bancoHoras in object.registrohoraextra_set.all %}
+    <li>
+        <a href="{% url 'edit_horas_extras' bancoHoras.id %}"> {{ bancoHoras.motivo }} | {{ bancoHoras.horas }}</a>
+    </li>
+    {% endfor %}
+
+</ul>
+<h2> Total de Horas Extras: {{ object.total_horas_extras }}</h2>
+<a href="{% url 'create_horas_extras' %}" class="btn btn-success"><i class="fa-regular fa-plus"></i>
+    Adicionar Horas
+</a>
+
+
+<button onclick="teste()">testar</button>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/main.js' %}"></script>
 {% endblock %}
